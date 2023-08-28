@@ -26,38 +26,50 @@ public class CarServiceImpl implements CarService{
 
     @Override
     public List<Car> getCarsWithPriceFilter(Double min, Double max) {
-        return   cars.stream().filter(c -> c.getPrice()>= min)
-                .filter(c -> c.getPrice()<= max).toList();
+        return   cars.stream()
+                .filter(c -> c.getPrice()>= min && c.getPrice() <= max)
+                .toList();
 
     }
 
     @Override
     public Car getById(Long id) {
 
-        return cars.stream().filter(c -> c.getId() == id).findFirst().orElseThrow();
+        return cars.stream()
+                .filter(c -> c.getId().equals(id))
+                .findAny()
+                .orElseThrow();
     }
 
     @Override
     public Car update(Long id, Car carRequest) {
        Car carUpdate = this.getById(id);
         carUpdate.setModel(carRequest.getModel());
-        carUpdate.setModel(carRequest.getModel());
         carUpdate.setBrand(carRequest.getBrand());
         carUpdate.setHorses(carRequest.getHorses());
         carUpdate.setPrice(carRequest.getPrice());
 
-        return null;
+        return carUpdate;
     }
 
     @Override
     public Car create(Car car) {
+        Long newId = cars.stream()
+                .mapToLong( c -> c.getId())
+                .max()
+                .orElse(0L) + 1L;
+        car.setId(newId);
         cars.add(car);
-        return null;
+        return getById(car.getId());
     }
 
     @Override
     public void delete(Long id) {
-        cars.remove(getById(id));
+        boolean successfulDeletation = cars.removeIf(car -> car.getId().equals(id));
+        if (!successfulDeletation){
+            throw new NoSuchElementException();
+        }
+
 
 
     }
