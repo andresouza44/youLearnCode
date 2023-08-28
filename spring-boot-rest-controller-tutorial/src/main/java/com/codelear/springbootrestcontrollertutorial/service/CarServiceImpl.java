@@ -1,6 +1,7 @@
 package com.codelear.springbootrestcontrollertutorial.service;
 
 import com.codelear.springbootrestcontrollertutorial.model.Car;
+import jakarta.validation.constraints.Positive;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -64,6 +65,7 @@ public class CarServiceImpl implements CarService{
     }
 
     @Override
+    @Positive
     public void delete(Long id) {
         boolean successfulDeletation = cars.removeIf(car -> car.getId().equals(id));
         if (!successfulDeletation){

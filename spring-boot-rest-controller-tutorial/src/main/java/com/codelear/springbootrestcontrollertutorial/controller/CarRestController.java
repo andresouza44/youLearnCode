@@ -3,6 +3,8 @@ package com.codelear.springbootrestcontrollertutorial.controller;
 
 import com.codelear.springbootrestcontrollertutorial.model.Car;
 import com.codelear.springbootrestcontrollertutorial.service.CarService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Positive;
 import org.hibernate.validator.constraints.ParameterScriptAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,8 +35,8 @@ public class CarRestController {
     }
     @GetMapping(params = {"minPrice", "maxPrice"})
     public List<Car> getAllFilteredByPrice(
-            @RequestParam (required = false) Double minPrice,
-            @RequestParam (required = false) Double maxPrice
+            @RequestParam (required = false) @Positive(message = "minPrice parameter must be greater than zero") Double minPrice,
+            @RequestParam (required = false) @Positive(message = "maxPrice parameter must be greater than zero") Double maxPrice
     ){
         return carService.getCarsWithPriceFilter(minPrice, maxPrice);
     }
@@ -48,7 +50,7 @@ public class CarRestController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Car> update(@PathVariable Long id, @RequestBody Car obj){
+    public ResponseEntity<Car> update( @PathVariable @Positive(message = "id must be a positive number")  Long id,@RequestBody  Car obj){
         carService.update(id, obj);
         return ResponseEntity.ok().body(obj);
 
@@ -56,7 +58,7 @@ public class CarRestController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity <Void> delete (@PathVariable Long id){
+    public ResponseEntity <Void> delete (@PathVariable @Positive(message = "id must be a positive number")  Long id){
         carService.delete(id);
         return  ResponseEntity.ok().build();
     }

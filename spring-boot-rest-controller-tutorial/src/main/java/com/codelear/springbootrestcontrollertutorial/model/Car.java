@@ -1,6 +1,11 @@
 package com.codelear.springbootrestcontrollertutorial.model;
 
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
 import java.util.Objects;
 
 public class Car {
@@ -21,13 +26,17 @@ public class Car {
         this.price = price;
     }
 
+    @NotNull(message = "Model must not be null")
+    @NotEmpty(message = "Model must have value")
     public Long getId() {
         return id;
     }
 
+    @Positive
     public void setId(Long id) {
         this.id = id;
     }
+
 
     public String getModel() {
         return model;
@@ -37,6 +46,7 @@ public class Car {
         this.model = model;
     }
 
+
     public String getBrand() {
         return brand;
     }
@@ -45,6 +55,7 @@ public class Car {
         this.brand = brand;
     }
 
+
     public Integer getHorses() {
         return horses;
     }
@@ -52,6 +63,7 @@ public class Car {
     public void setHorses(Integer horses) {
         this.horses = horses;
     }
+
 
     public Double getPrice() {
         return price;
