@@ -4,6 +4,9 @@
 
 <h2>Tutoriais Spring Boot from You Learn Code.</h2>
 
-[Spring Boot rest Controller Tutorial](https://github.com/andresouza44/youLearnCode/tree/main/spring-boot-rest-controller-tutorial)
+
+[SPRING BOOT REST CONTROLLER](https://github.com/andresouza44/youLearnCode/tree/main/spring-boot-rest-controller-tutorial)
+<br>
+[SPRING BOOT DATA JPA](https://youlearncode.com/spring-boot-data-jpa/)
 
 
