@@ -1,9 +1,11 @@
-package model;
+package com.youlearn.SpringBootJPA.model;
 
 import jakarta.persistence.*;
 
 import java.util.Objects;
 
+@Entity
+@Table
 public class Card {
 
     @Id

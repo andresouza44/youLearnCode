@@ -1,4 +1,4 @@
-package model;
+package com.youlearn.SpringBootJPA.model;
 
 import jakarta.persistence.*;
 
@@ -7,6 +7,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
+@Table
 public class BankUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +20,7 @@ public class BankUser {
             foreignKey = @ForeignKey(name="fk_bak_user_id_account")),
                 inverseJoinColumns = @JoinColumn(name="account_id", foreignKey =
                     @ForeignKey( name="fk_account_id_bank_user")))
-    private Set<Account> account = new HashSet();
+    private Set<Account> accounts = new HashSet();
 
 
     @OneToMany
@@ -29,11 +30,11 @@ public class BankUser {
     public BankUser() {
 
     }
-    public BankUser(Long id, String name, String taxId, Set<Account> account, Set<Card> cards) {
+    public BankUser(Long id, String name, String taxId, Set<Account> accounts, Set<Card> cards) {
         this.id = id;
         this.name = name;
         this.taxId = taxId;
-        this.account = account;
+        this.accounts = accounts;
         this.cards = cards;
     }
 
@@ -92,7 +93,7 @@ public class BankUser {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", taxId='" + taxId + '\'' +
-                ", account=" + account +
+                ", account=" + accounts +
                 ", cards=" + cards +
                 '}';
     }

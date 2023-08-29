@@ -1,4 +1,4 @@
-package model;
+package com.youlearn.SpringBootJPA.model;
 
 
 import jakarta.persistence.*;
@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name="tb_account")
+@Table
 public class Account {
 
     @Id
@@ -21,6 +21,7 @@ public class Account {
 
     @OneToOne(mappedBy ="account")
     private Card card;
+
     private String IBAN;
 
     public Account(){
