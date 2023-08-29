@@ -1,4 +1,4 @@
-<img width="500" height="100" loading="lazy" src="img_1.png" />  
+<img width="400" height="90" loading="lazy" src="img_1.png" />  
 
 https://youlearncode.com/
 
