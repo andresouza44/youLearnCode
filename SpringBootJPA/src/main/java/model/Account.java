@@ -15,7 +15,11 @@ public class Account {
     private Long id;
     private String accountName;
     private AccountType accountType;
+
+    @ManyToMany(mappedBy = "accounts")
     private Set<BankUser> bankUsers;
+
+    @OneToOne(mappedBy ="account")
     private Card card;
     private String IBAN;
 

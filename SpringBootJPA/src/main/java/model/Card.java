@@ -1,8 +1,6 @@
 package model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
@@ -14,7 +12,12 @@ public class Card {
     private String number;
     private String cvv;
     private String expirationDAte;
+
+    @OneToOne(optional = false)
+    @JoinColumn(name="account_id", foreignKey = @ForeignKey(name="fk_account_id"))
     private Account account;
+
+    @ManyToOne(optional = false)
     private BankUser bankUser;
 
     public Card(){

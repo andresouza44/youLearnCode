@@ -1,9 +1,6 @@
 package model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -16,7 +13,17 @@ public class BankUser {
     private Long id;
     private String name;
     private String taxId;
+
+    @ManyToMany
+    @JoinTable(name= "bank_user_account", joinColumns = @JoinColumn(name = "bank_user_id",
+            foreignKey = @ForeignKey(name="fk_bak_user_id_account")),
+                inverseJoinColumns = @JoinColumn(name="account_id", foreignKey =
+                    @ForeignKey( name="fk_account_id_bank_user")))
     private Set<Account> account = new HashSet();
+
+
+    @OneToMany
+    @JoinColumn(name="bank_user_id", foreignKey = @ForeignKey(name="fk_bank_user_id_cards"))
     private Set<Card> cards = new HashSet<>();
 
     public BankUser() {
