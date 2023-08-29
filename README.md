@@ -1,4 +1,4 @@
-<img width="50" height="50" loading="lazy" src="img_1.png" />  
+<img width="100" height="50" loading="lazy" src="img_1.png" />  
 
 ![img_1.png](img_1.png)https://youlearncode.com/
 
