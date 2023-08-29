@@ -13,6 +13,7 @@ public class BankUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String surname;
     private String taxId;
 
     @ManyToMany
@@ -30,9 +31,11 @@ public class BankUser {
     public BankUser() {
 
     }
-    public BankUser(Long id, String name, String taxId, Set<Account> accounts, Set<Card> cards) {
+
+    public BankUser(Long id, String name, String surname, String taxId, Set<Account> accounts, Set<Card> cards) {
         this.id = id;
         this.name = name;
+        this.surname = surname;
         this.taxId = taxId;
         this.accounts = accounts;
         this.cards = cards;
@@ -54,22 +57,20 @@ public class BankUser {
         this.name = name;
     }
 
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
     public String getTaxId() {
         return taxId;
     }
 
     public void setTaxId(String taxId) {
         this.taxId = taxId;
-    }
-
-
-
-    public Set<Card> getCards() {
-        return cards;
-    }
-
-    public void setCards(Set<Card> cards) {
-        this.cards = cards;
     }
 
     @Override
@@ -92,9 +93,14 @@ public class BankUser {
         return "BankUser{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
                 ", taxId='" + taxId + '\'' +
-                ", account=" + accounts +
+                ", accounts=" + accounts +
                 ", cards=" + cards +
                 '}';
+    }
+
+    public void setAccounts(Set<Account> accounts) {
+        this.accounts = accounts;
     }
 }

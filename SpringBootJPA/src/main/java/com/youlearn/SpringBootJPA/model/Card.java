@@ -13,7 +13,7 @@ public class Card {
     private Long Id;
     private String number;
     private String cvv;
-    private String expirationDAte;
+    private String expirationDate;
 
     @OneToOne(optional = false)
     @JoinColumn(name="account_id", foreignKey = @ForeignKey(name="fk_account_id"))
@@ -29,7 +29,7 @@ public class Card {
         Id = id;
         this.number = number;
         this.cvv = cvv;
-        this.expirationDAte = expirationDAte;
+        this.expirationDate = expirationDAte;
         this.account = account;
         this.bankUser = bankUser;
     }
@@ -58,12 +58,12 @@ public class Card {
         this.cvv = cvv;
     }
 
-    public String getExpirationDAte() {
-        return expirationDAte;
+    public String getExpirationDate() {
+        return expirationDate;
     }
 
-    public void setExpirationDAte(String expirationDAte) {
-        this.expirationDAte = expirationDAte;
+    public void setExpirationDate(String expirationDate) {
+        this.expirationDate = expirationDate;
     }
 
     public Account getAccount() {
@@ -103,7 +103,7 @@ public class Card {
                 "Id=" + Id +
                 ", number='" + number + '\'' +
                 ", cvv='" + cvv + '\'' +
-                ", expirationDAte='" + expirationDAte + '\'' +
+                ", expirationDAte='" + expirationDate + '\'' +
                 ", account=" + account +
                 ", bankUser=" + bankUser +
                 '}';
