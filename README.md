@@ -7,6 +7,6 @@
 
 [SPRING BOOT REST CONTROLLER](https://github.com/andresouza44/youLearnCode/tree/main/spring-boot-rest-controller-tutorial)
 <br>
-[SPRING BOOT DATA JPA](spring-boot-rest-controller-tutorial)
+[SPRING BOOT DATA JPA](SpringBootJPA)
 
 
